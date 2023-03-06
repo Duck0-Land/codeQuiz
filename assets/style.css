@@ -44,16 +44,3 @@ li {
     display:none;
 }
 
-.button{
-    background:white;
-    border-radius: 3px;
-    padding: 10px;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-.button:hover{
-  
-    background-color:greenyellow;
-  
-}
