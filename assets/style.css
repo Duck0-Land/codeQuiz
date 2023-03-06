@@ -1,46 +1,68 @@
+/*general settings start*/
 *{
+    margin: 5;
+    padding: 5;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+body{
     font-family:Georgia, 'Times New Roman', Times, serif;
-    box-sizing: border-box;
+    background-color: blueviolet;
 }
 
 
-.head{
-    display:flex;
-    justify-content: center;
-}
+/*general settings end*/
 
-body {
+
+/*landing page settings start*/
+.landingPage{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background-color: blueviolet;
+    justify-content: space-between;
   }
 
-
-
-
-.question_page {
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
+.scorepage{
+    font-size: 20px;
 }
-/*hide the bullet points from listings*/
-ul {
-    list-style-type: none;
+.header{
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: baseline;
-    padding-left: 50px;
-   }
-
-li {
-    margin-bottom: 10px;
+    font-size: 45px;
+    font-weight: bold;
 }
 
-/*display only the intro page and hide the rest sections*/
-.question_page, .submit_page, .highscore_page, #check_line {
-    display:none;
+.startInfo{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
 }
 
+.main{
+    display: flex;
+    justify-content: center;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    border-radius: 10px;
+}
+
+.main:hover{
+    background-color: aquamarine;
+}
+/*landing page settings end*/
+
+
+
+
+
+
+
+  /**/
