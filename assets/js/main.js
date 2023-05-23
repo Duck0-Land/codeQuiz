@@ -53,4 +53,11 @@ timer.addEventListener("click", function () {
         //this controls the speed of the timer
         1000);
     }
+    clear(container);
 });
+
+//function to remove the main page html
+function clear(container) {
+    document.body.innerHTML = ""
+}
+
