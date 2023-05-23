@@ -29,6 +29,7 @@ let questions = [
 
 ];
 
+
 //timer variables
 //this variable is the current time
 let timeEl = document.querySelector("#time");
@@ -58,6 +59,12 @@ timer.addEventListener("click", function () {
 
 //function to remove the main page html
 function clear(container) {
-    document.body.innerHTML = ""
+    container.innerHTML = ""
+    generate(questions)
+};
+
+function generate(questions) {
+    container.innerHTML = questions
 }
+
 
