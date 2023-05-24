@@ -1,5 +1,6 @@
 //code for main html page and to render quiz questions
 //question variables
+let questionContainer = document.querySelector("#question")
 let questions = [
     {
         title: "Commonly used data types DO NOT include:",
@@ -48,7 +49,7 @@ timer.addEventListener("click", function () {
 
     if (totaltime <= 0) {
     clearInterval(holdInterval);
-    allDone();
+    finished();
             }
         }, 
         //this controls the speed of the timer
@@ -63,8 +64,47 @@ function clear(container) {
     generate(questions)
 };
 
+//quiz variables
+let index = 0;
+//this will generate the quiz
 function generate(questions) {
-    container.innerHTML = questions
+    //this for loop is in charge of pulling data from the array
+for (let i = 0; i < questions.length; i++) {
+    //this pulls the question from the array
+    let quizQuestion = questions[index].titles;
+    //this pulls the answer choices from the array
+    let quizChoice = questions[index].choices;
+    questionContainer.textContent = quizQuestion;
+    
+}
+};
+
+//function to determine the write answer
+function correct(answer) {
+    let choice = answer.target;
+
+    //the conditions to determine the answer
+    if (choice.matches("li"))
+        var newDiv = document.createElement("div");
+        newDiv.setAttribute("id", "creatediv");
+        //correct start
+        if (choice.textContent == questions[index].answer) {
+            
+        } 
+        //correct end
+        //incoreect and penalty start
+        else {
+            totaltime = totaltime = penalty
+        }
 }
 
-
+//else if statement will end the quiz and give the user their score
+if (index >= questions.length) {
+    finished();
+} else {
+    generate(index);
+}
+//this function clears the quiz once its finished
+function finished() {
+    questionContainer.innerHTML = ""
+}
