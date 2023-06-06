@@ -1,31 +1,35 @@
 //code for main html page and to render quiz questions
 //question variables
-let questionContainer = document.querySelector("#question")
+let container = document.querySelector('#container')
+let questionContainer = document.querySelector("#question");
+let score = 0;
+let index = 0;
+let newElement = document.createElement("ul");
 let questions = [
     {
         title: "Commonly used data types DO NOT include:",
-        choices: ["a. strings", "b. booleans", "c. alerts", "d. numbers"],
-        answer: "c."
+        choices: ["strings", "booleans", "alerts", "numbers"],
+        answer: "alerts"
     },
     {
         title: "The condition in an if / else statement is enclosed within ____.",
-        choices: ["a. quotes", "b. curly brackets", "c. parentheses", "d. square brackets"],
-        answer: "c."
+        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        answer: "parentheses"
     },
     {
         title: "Arrays in Javascript can be used to store ____.",
-        choices: ["a. numbers and strings", "b. other arrays", "c. booleans", "d. all of the above"],
+        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
         answer: "all of the above"
     },
     {
         title: "String values must be enclosed within ____ when being assigned to variables.",
-        choices: ["a. commas", "b. curly brackets", "c. quotes", "d. parenthesis"],
+        choices: ["commas", "curly brackets", "quotes", "parenthesis"],
         answer: "quotes"
     },
     {
         title: "A very useful tool for used during development and debugging for printing content to the debugger is:",
-        choices: ["a. Javascript", "b. terminal / bash", "c. for loops", "d. console log"],
-        answer: "d."
+        choices: ["Javascript", "terminal / bash", "for loops", "console log"],
+        answer: "console log"
     },
 
 ];
@@ -40,71 +44,72 @@ let totaltime = 75;
 let penalty = 7;
 let holdInterval = 0;
 
+
 //event listener that sets off the timer
 timer.addEventListener("click", function () {
     if (holdInterval === 0) {
-    holdInterval = setInterval(function () {
-    totaltime--;
-    timeEl.textContent = "Time: " + totaltime;
+        holdInterval = setInterval(function () {
+            totaltime--;
+            timeEl.textContent = "Time: " + totaltime;
 
-    if (totaltime <= 0) {
-    clearInterval(holdInterval);
-    finished();
+            if (totaltime <= 0) {
+                clearInterval(holdInterval);
+                finished();
             }
         }, 
         //this controls the speed of the timer
         1000);
     }
-    clear(container);
+    generate(index);
 });
 
-//function to remove the main page html
-function clear(container) {
-    container.innerHTML = ""
-    generate(questions)
-};
-
-//quiz variables
-let index = 0;
-//this will generate the quiz
-function generate(questions) {
-    //this for loop is in charge of pulling data from the array
-for (let i = 0; i < questions.length; i++) {
-    //this pulls the question from the array
-    let quizQuestion = questions[index].titles;
-    //this pulls the answer choices from the array
-    let quizChoice = questions[index].choices;
-    questionContainer.textContent = quizQuestion;
-    
+//
+function generate(index) {
+    // removes main html 
+    container.innerHTML = "";
+    newElement.innerHTML = "";
+        //this for loop is in charge of pulling data from the array
+    for (var i = 0; i < questions.length; i++) {
+        //this pulls the questions from the array
+        var userQuestion = questions[index].title;
+        //this pulls the answer choices from the array
+        var userChoices = questions[index].choices;
+        questionContainer.textContent = userQuestion;
+    }
+    // New for each for question choices
+    userChoices.forEach(function (newItem) {
+        var listItem = document.createElement("li");
+        listItem.textContent = newItem;
+        questionContainer.appendChild(newElement);
+        newElement.appendChild(listItem);
+        listItem.addEventListener("click", (compare));
+    })
 }
-};
+// Event to compare choices with answer
+function compare(answer) {
+    var choice = answer.target;
 
-//function to determine the write answer
-function correct(answer) {
-    let choice = answer.target;
-
-    //the conditions to determine the answer
-    if (choice.matches("li"))
+    if (choice.matches("li")) {
         var newDiv = document.createElement("div");
-        newDiv.setAttribute("id", "creatediv");
-        //correct start
+        newDiv.setAttribute("id", "newDiv");
+        // Correct condition 
         if (choice.textContent == questions[index].answer) {
-            
-        } 
-        //correct end
-        //incoreect and penalty start
-        else {
-            totaltime = totaltime = penalty
+            score++; 
+        } else {
+            //will remove 7 seconds for wrong answers
+            totaltime = totaltime - penalty;
         }
-}
 
-//else if statement will end the quiz and give the user their score
-if (index >= questions.length) {
-    finished();
-} else {
-    generate(index);
-}
-//this function clears the quiz once its finished
-function finished() {
-    questionContainer.innerHTML = ""
+    }
+    //tells the user which question it is on
+    index++;
+    //else if statement will end the quiz and give the user their score
+    if (index >= questions.length) {
+        //will apend the last page with the users score
+        finished();
+    } else {
+        generate(index);
+    }
+    questionContainer.appendChild(newDiv);
+
 }

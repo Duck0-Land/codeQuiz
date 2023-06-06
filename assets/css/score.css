@@ -1,0 +1,38 @@
+/*general settings start*/
+*{
+    margin: 5;
+    padding: 5;
+  }
+  
+  a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+  }
+  body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background-color: blueviolet;
+  }
+  button{
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    border-radius: 10px;
+  }
+  /*general settings end*/
+  
+  /*header section start*/
+  
+  .highscore{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+   align-items: stretch;
+  }
+  
+  .highheader{
+    display: flex;
+    justify-content: center;
+  }
+  /*button section end*/

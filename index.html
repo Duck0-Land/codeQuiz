@@ -10,23 +10,26 @@
 
 
   
-<body>
-    <!-- this div is left out so it can display the timer while the quiz is generated -->
+  <body>
+    <a href="assets\highScore.html"> View High Scores</a>
+    <!-- / place holder for the timer -->
     <div id="time"></div>
+    <!-- anchor for the quiz to render -->
     <div id="question"></div>
-    <div id="container">
-        <h1>Code Quiz Challenge</h1>
-        
-        <p>You have 75 seconds to answer 5 javascript questions. 
-        You will be penalized by 10 seconds for every incorrect answer.
-        Do your best!</p>
-        <button id="timer">Start Quiz</button>
-    </div>
+    <div class="landingPage" id="container">
+
+          <div class="header"><h1>Code Quiz Challenge</h1></div>
+
+          <p class="startInfo">
+          You have 75 seconds to answer 5 javascript questions. 
+          You will be penalized by 10 seconds for every incorrect answer.
+          Do your best!
+          </p>
+          <button class="main" id="timer">Start</button>
+      </div>
 
 
-
-
-</body>
+  </body>
 
 <script src="../codeQuiz/assets/js/main.js"></script>
 </html>

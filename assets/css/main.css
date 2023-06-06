@@ -1,0 +1,70 @@
+/*general settings start*/
+*{
+    margin: 5;
+    padding: 5;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background-color: blueviolet;
+}
+
+/*general settings end*/
+
+
+/*landing page settings start*/
+.header{
+    display: flex;
+    justify-content: center;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.startInfo{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+}
+
+.main:hover{
+    background-color: aquamarine;
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    border-radius: 10px;
+}
+/*landing page settings end*/
+
+
+/*quiz css start*/
+li {
+    background-color: gray;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 25px;
+    margin-right: 55rem;
+    color: white;
+    text-align: center;
+    list-style: none;
+}
+
+#newDiv {
+    margin-top: 20px;
+    border-top: 1px solid lightgray;
+}
+/*quiz css end*/
