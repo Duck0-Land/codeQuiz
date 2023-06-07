@@ -35,4 +35,13 @@
     display: flex;
     justify-content: center;
   }
+
+  li {
+    background-color: white;
+    font-size: 20px;
+    margin-top: 10px;
+    color: black;
+    text-align: center;
+    list-style: none;
+  }
   /*button section end*/

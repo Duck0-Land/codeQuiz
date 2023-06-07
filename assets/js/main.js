@@ -76,17 +76,16 @@ function generate(index) {
         var userChoices = questions[index].choices;
         questionContainer.textContent = userQuestion;
     }
-    // New for each for question choices
     userChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
         questionContainer.appendChild(newElement);
         newElement.appendChild(listItem);
-        listItem.addEventListener("click", (compare));
+        listItem.addEventListener("click", (findCorrect));
     })
 }
-// Event to compare choices with answer
-function compare(answer) {
+//this function will determine the correct answer
+function findCorrect(answer) {
     var choice = answer.target;
 
     if (choice.matches("li")) {
@@ -105,11 +104,89 @@ function compare(answer) {
     index++;
     //else if statement will end the quiz and give the user their score
     if (index >= questions.length) {
-        //will apend the last page with the users score
+        //this condition triggers the score page
         finished();
     } else {
         generate(index);
     }
     questionContainer.appendChild(newDiv);
+
+}
+//this function triggers the calculation of the score as well as generates the score page
+function finished() {
+    questionContainer.innerHTML = "";
+    timeEl.innerHTML = "";
+
+    //score header
+    var createH1 = document.createElement("h1");
+    createH1.setAttribute("id", "createH1");
+    createH1.textContent = "Your Score"
+
+    questionContainer.appendChild(createH1);
+
+    //box to hold text for the score page
+    var createP = document.createElement("p");
+    createP.setAttribute("id", "createP");
+
+    questionContainer.appendChild(createP);
+
+    // Calculates time remaining and replaces it with score
+    if (totaltime >= 0) {
+        var timeLeft = totaltime;
+        var createP2 = document.createElement("p");
+        clearInterval(holdInterval);
+        createP.textContent = "Final Score:" + timeLeft;
+        questionContainer.appendChild(createP2);
+    }
+
+    //this renders the text for the score page
+    var createLabel = document.createElement("label");
+    createLabel.setAttribute("id", "createLabel");
+    createLabel.textContent = "Enter your name: ";
+
+    questionContainer.appendChild(createLabel);
+
+    //this allows you to enter the users name
+    var createInput = document.createElement("input");
+    createInput.setAttribute("type", "text");
+    createInput.setAttribute("id", "name");
+    createInput.textContent = "";
+
+    questionContainer.appendChild(createInput);
+
+    //button to save info to totalScores
+    var createSubmit = document.createElement("button");
+    createSubmit.setAttribute("type", "submit");
+    createSubmit.setAttribute("id", "Submit");
+    createSubmit.textContent = "Submit";
+
+    questionContainer.appendChild(createSubmit);
+
+    //local storage to hold names and scores
+    createSubmit.addEventListener("click", function () {
+        var name = createInput.value;
+
+        if (name === null) {
+
+            console.log("No value entered!");
+
+        } else {
+            var finalScore = {
+                name: name,
+                score: timeLeft
+            }
+            console.log(finalScore);
+            var totalScores = localStorage.getItem("totalScores");
+            if (totalScores === null) {
+                totalScores = [];
+            } else {
+                totalScores = JSON.parse(totalScores);
+            }
+            totalScores.push(finalScore);
+            var newScore = JSON.stringify(totalScores);
+            localStorage.setItem("totalScores", newScore);
+            window.location.replace("./score.html");
+        }
+    });
 
 }
